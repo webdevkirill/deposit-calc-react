@@ -16,7 +16,7 @@ export default function DepositTypeChooser() {
 	};
 
 	return (
-		<div>
+		<div className={styles.root}>
 			<p className={styles.label}>Вклад</p>
 			<FormControl variant='outlined' className={styles.input}>
 				<Select

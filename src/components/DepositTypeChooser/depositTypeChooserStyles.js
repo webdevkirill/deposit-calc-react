@@ -2,6 +2,9 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 
 export const depositTypeChooserStyles = makeStyles({
+	root: {
+		marginBottom: 37,
+	},
 	label: {
 		fontSize: 18,
 		lineHeight: 1,
@@ -25,8 +28,5 @@ export const BootstrapInput = withStyles((theme) => ({
 			borderColor: '#80bdff',
 			backgroundColor: 'transparent',
 		},
-	},
-	arrow: {
-		display: 'none',
 	},
 }))(InputBase);
