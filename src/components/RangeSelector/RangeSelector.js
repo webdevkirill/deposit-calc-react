@@ -7,6 +7,7 @@ export default function RangeSelector({ config }) {
 		title,
 		valueName,
 		minValue,
+		maxValue,
 		step,
 		tooltipTitle,
 		tooltipText,
@@ -31,7 +32,7 @@ export default function RangeSelector({ config }) {
 				<RangeSlider
 					step={step}
 					min={minValue}
-					max={24}
+					max={maxValue}
 					onChange={rangeChangeHandler}
 					value={rangeSlectorValue}
 				/>
