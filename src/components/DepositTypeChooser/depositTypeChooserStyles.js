@@ -10,6 +10,9 @@ export const depositTypeChooserStyles = makeStyles({
 		lineHeight: 1,
 		marginBottom: 15,
 	},
+	input: {
+		width: 490,
+	},
 });
 
 export const BootstrapInput = withStyles((theme) => ({
@@ -22,7 +25,8 @@ export const BootstrapInput = withStyles((theme) => ({
 		padding: '22px 20px',
 		transition: theme.transitions.create(['border-color', 'box-shadow']),
 		outline: 'none',
-		width: 490,
+		maxWidth: 490,
+		width: '100%',
 		'&:focus': {
 			borderRadius: 3,
 			borderColor: '#80bdff',

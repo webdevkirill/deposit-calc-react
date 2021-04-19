@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PrettoSlider } from './rangeSelectorStyles';
+import { RangeSlider, rangeSelectorStyles } from './rangeSelectorStyles';
 
 export default function RangeSelector({ config }) {
 	const { title, valueName, minValue, step } = config;
@@ -9,15 +9,26 @@ export default function RangeSelector({ config }) {
 		setRangeSlectorValue(newValue);
 	};
 
+	const styles = rangeSelectorStyles();
+
 	return (
-		<div>
-			<PrettoSlider
-				step={step}
-				min={minValue}
-				max={24}
-				onChange={rangeChangeHandler}
-				value={rangeSlectorValue}
-			/>
+		<div className={styles.container}>
+			<div>
+				<div className={styles.labelsContainer}>
+					<p className={styles.label}>Label</p>
+					<p
+						className={styles.value}
+					>{`${rangeSlectorValue} ${valueName}`}</p>
+				</div>
+				<RangeSlider
+					step={step}
+					min={minValue}
+					max={24}
+					onChange={rangeChangeHandler}
+					value={rangeSlectorValue}
+				/>
+			</div>
+			<p>Tooltip</p>
 		</div>
 	);
 }
