@@ -13,9 +13,9 @@ export const ArrowIcon = () => {
 		<SvgIcon fill='none' viewBox='0 0 12 8' style={arrowStyles}>
 			<path
 				fill='#1073AF'
-				fill-rule='evenodd'
+				fillRule='evenodd'
 				d='M.293.316a.95.95 0 011.414 0L6 4.948 10.293.316a.95.95 0 011.414 0 1.14 1.14 0 010 1.526L6 8 .293 1.842a1.14 1.14 0 010-1.526z'
-				clip-rule='evenodd'
+				clipRule='evenodd'
 			/>
 		</SvgIcon>
 	);
