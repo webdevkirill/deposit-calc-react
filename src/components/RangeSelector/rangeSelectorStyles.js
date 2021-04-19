@@ -34,6 +34,7 @@ export const RangeSlider = withStyles({
 export const rangeSelectorStyles = makeStyles({
 	container: {
 		display: 'flex',
+		marginBottom: 24,
 	},
 	labelsContainer: {
 		display: 'flex',
