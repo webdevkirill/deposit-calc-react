@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
+import Tooltip from '../Tooltip/Tooltip';
 import { RangeSlider, rangeSelectorStyles } from './rangeSelectorStyles';
 
 export default function RangeSelector({ config }) {
-	const { title, valueName, minValue, step } = config;
+	const {
+		title,
+		valueName,
+		minValue,
+		step,
+		tooltipTitle,
+		tooltipText,
+	} = config;
 	const [rangeSlectorValue, setRangeSlectorValue] = useState(minValue);
 
 	const rangeChangeHandler = (e, newValue) => {
@@ -28,7 +36,12 @@ export default function RangeSelector({ config }) {
 					value={rangeSlectorValue}
 				/>
 			</div>
-			<p>Tooltip</p>
+			<p>
+				<Tooltip
+					tooltipTitle={tooltipTitle}
+					tooltipText={tooltipText}
+				/>
+			</p>
 		</div>
 	);
 }
