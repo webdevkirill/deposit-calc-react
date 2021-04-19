@@ -15,7 +15,7 @@ export default function RangeSelector({ config }) {
 		<div className={styles.container}>
 			<div>
 				<div className={styles.labelsContainer}>
-					<p className={styles.label}>Label</p>
+					<p className={styles.label}>{title}</p>
 					<p
 						className={styles.value}
 					>{`${rangeSlectorValue} ${valueName}`}</p>
