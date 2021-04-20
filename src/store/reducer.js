@@ -1,15 +1,20 @@
-import { CHANGE_DEPOSIT_TYPE, LOAD_DATA } from './types';
+import { CHANGE_DEPOSIT_TYPE, LOAD_DATA, CHANGE_MONTH_VALUE } from './types';
 
 const initialState = {
 	data: null,
 	depositType: null,
 	periodFrom: null,
+	monthValue: null,
 };
 
 const handlers = {
 	[LOAD_DATA]: (state, { payload }) => ({ ...state, data: payload }),
 	[CHANGE_DEPOSIT_TYPE]: (state, { payload }) =>
 		changeDepositTypeHelper(state, payload),
+	[CHANGE_MONTH_VALUE]: (state, { payload }) => ({
+		...state,
+		monthValue: payload,
+	}),
 	default: (state) => state,
 };
 
@@ -26,5 +31,7 @@ const changeDepositTypeHelper = (state, depositType) => {
 		...state,
 		depositType,
 		periodFrom,
+		monthValue:
+			state.monthValue < periodFrom ? periodFrom : state.monthValue,
 	};
 };
