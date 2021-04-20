@@ -32,8 +32,8 @@ const rangesConfig = [
 export default function LeftSide() {
 	const { isLoading } = useFetch('db.json');
 
-	const { data, depositType } = useSelector((state) => state);
-	console.log(data, depositType);
+	const state = useSelector((state) => state);
+	console.log(state);
 
 	if (isLoading) {
 		return <p>Загрузка...</p>;

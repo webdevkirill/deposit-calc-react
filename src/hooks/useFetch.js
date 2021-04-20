@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { changeDepositType, loadData, setPeriodFrom } from '../store/actions';
+import { changeDepositType, loadData } from '../store/actions';
 
 export const useFetch = (url) => {
 	const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +13,6 @@ export const useFetch = (url) => {
 				const deposits = data.deposits;
 				dispatch(loadData(deposits));
 				dispatch(changeDepositType(deposits[0].code));
-				dispatch(setPeriodFrom(deposits[0].param[0]['period_from']));
 				setIsLoading(false);
 			});
 	}, [url, dispatch]);

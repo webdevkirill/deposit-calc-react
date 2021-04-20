@@ -1,3 +1,2 @@
 export const LOAD_DATA = 'LOAD_DATA';
 export const CHANGE_DEPOSIT_TYPE = 'CHANGE_DEPOSIT_TYPE';
-export const SET_PERIOD_FROM = 'SET_PERIOD_FROM';
