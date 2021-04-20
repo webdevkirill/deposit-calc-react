@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import { HtmlTooltip, tooltipStyles } from './tooltipStyles';
+import Typography from '@material-ui/core/Typography';
 
 export default function Tooltip({ tooltipTitle, tooltipText }) {
 	const [isOpen, setIsOpen] = useState(false);
@@ -22,8 +23,12 @@ export default function Tooltip({ tooltipTitle, tooltipText }) {
 				arrow
 				title={
 					<>
-						<h5 className={styles.tooltipTitle}>{tooltipTitle}</h5>
-						<p className={styles.tooltipText}>{tooltipText}</p>
+						<span className={styles.tooltipTitle}>
+							{tooltipTitle}
+						</span>
+						<span className={styles.tooltipText}>
+							{tooltipText}
+						</span>
 					</>
 				}
 				placement='right-start'

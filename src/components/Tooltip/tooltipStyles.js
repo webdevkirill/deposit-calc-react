@@ -43,6 +43,7 @@ export const tooltipStyles = makeStyles({
 		fontSize: 18,
 		lineHeight: '22px',
 		marginBottom: 10,
+		display: 'block',
 	},
 	tooltipText: {
 		fontSize: 14,

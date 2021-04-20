@@ -17,7 +17,7 @@ export default function ResultBlock() {
 			id: 'sumAfterPeriod',
 			label: 'Сумма через',
 			value: `${summ},00 Р`,
-			labelUnderlined: '24 мес',
+			labelUnderlined: `${monthValue} мес`,
 		},
 		{ id: 'money', label: 'Доход', value: `${benefit},00 Р` },
 	];
