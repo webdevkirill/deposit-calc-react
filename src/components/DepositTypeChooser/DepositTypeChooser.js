@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { ArrowIcon } from '../../common/icons';
@@ -6,13 +8,15 @@ import {
 	BootstrapInput,
 	depositTypeChooserStyles,
 } from './depositTypeChooserStyles';
+import { changeDepositType } from '../../store/actions';
 
 export default function DepositTypeChooser() {
 	const styles = depositTypeChooserStyles();
-	const [depositType, setDepositType] = useState(1);
+	const dispatch = useDispatch();
+	const { depositType, data } = useSelector((state) => state);
 
 	const depositTypeChangeHandler = (e) => {
-		setDepositType(e.target.value);
+		dispatch(changeDepositType(e.target.value));
 	};
 
 	return (
@@ -27,9 +31,11 @@ export default function DepositTypeChooser() {
 					input={<BootstrapInput />}
 					IconComponent={ArrowIcon}
 				>
-					<option value={1}>Первый</option>
-					<option value={2}>Второй</option>
-					<option value={3}>Третий</option>
+					{data.map((deposit) => (
+						<option key={deposit.code} value={deposit.code}>
+							{deposit.name}
+						</option>
+					))}
 				</Select>
 			</FormControl>
 		</div>

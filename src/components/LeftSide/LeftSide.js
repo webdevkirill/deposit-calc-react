@@ -3,8 +3,10 @@ import { Header } from '../../common/typography/typography';
 import DepositTypeChooser from '../DepositTypeChooser/DepositTypeChooser';
 import RangeSelector from '../RangeSelector/RangeSelector';
 import ResultBlock from '../ResultBlock/ResultBlock';
+import { useFetch } from '../../hooks/useFetch';
+import { useSelector } from 'react-redux';
 
-const tooltipConfig = [
+const rangesConfig = [
 	{
 		id: 'depositeTime',
 		title: 'Срок вклада',
@@ -27,13 +29,22 @@ const tooltipConfig = [
 	},
 ];
 
-export default function LeftSide({ deposits }) {
+export default function LeftSide() {
+	const { isLoading } = useFetch('db.json');
+
+	const { data, depositType } = useSelector((state) => state);
+	console.log(data, depositType);
+
+	if (isLoading) {
+		return <p>Загрузка...</p>;
+	}
+
 	return (
 		<div>
 			<Header mb={34}>Депозитный калькулятор</Header>
 			<DepositTypeChooser />
-			{tooltipConfig.map((config) => (
-				<RangeSelector key={config.id} config={config} />
+			{rangesConfig.map((range) => (
+				<RangeSelector key={range.id} config={range} />
 			))}
 			<ResultBlock />
 		</div>
