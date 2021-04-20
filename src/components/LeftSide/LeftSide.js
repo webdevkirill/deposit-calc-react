@@ -27,7 +27,7 @@ const tooltipConfig = [
 	},
 ];
 
-export default function LeftSide() {
+export default function LeftSide({ deposits }) {
 	return (
 		<div>
 			<Header mb={34}>Депозитный калькулятор</Header>
