@@ -10,7 +10,7 @@ export default function Wrapper({ children }) {
 			container
 			direction='row'
 			justify='center'
-			alignItems='flex-start'
+			alignItems='stretch'
 			className={styles.root}
 		>
 			{children}

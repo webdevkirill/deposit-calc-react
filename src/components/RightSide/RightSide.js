@@ -1,6 +1,7 @@
 import React from 'react';
 import { rightSideStyles } from './rightSideStyles';
 import img from '../../img/rightSide.png';
+import Notice from '../Notice/Notice';
 
 export default function RightSide() {
 	const styles = rightSideStyles();
@@ -11,6 +12,7 @@ export default function RightSide() {
 				alt='Изображение приложения'
 				className={styles.img}
 			/>
+			<Notice />
 		</div>
 	);
 }

@@ -4,6 +4,7 @@ export const rightSideStyles = makeStyles((theme) => ({
 	root: {
 		marginTop: 70,
 		marginLeft: 85,
+		minHeight: '100%',
 		display: 'flex',
 		flexDirection: 'column',
 		justifyContent: 'space-between',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { ArrowIcon } from '../../common/ArrowIcon';
+import { ArrowIcon } from '../../common/icons';
 import {
 	BootstrapInput,
 	depositTypeChooserStyles,
