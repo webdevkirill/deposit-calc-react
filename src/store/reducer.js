@@ -18,15 +18,11 @@ const initialState = {
 const handlers = {
 	[LOAD_DATA]: (state, { payload }) => ({ ...state, data: payload }),
 	[CHANGE_DEPOSIT_TYPE]: (state, { payload }) =>
-		changeDepositTypeHelper(state, payload),
-	[CHANGE_MONTH_VALUE]: (state, { payload }) => ({
-		...state,
-		monthValue: payload,
-	}),
-	[CHANGE_SUM_VALUE]: (state, { payload }) => ({
-		...state,
-		depositeSumValue: payload,
-	}),
+		changeDepositHelper(state, payload),
+	[CHANGE_MONTH_VALUE]: (state, { payload }) =>
+		changeMonthCountHandler(state, payload),
+	[CHANGE_SUM_VALUE]: (state, { payload }) =>
+		changeSumValueHandler(state, payload),
 	default: (state) => state,
 };
 
@@ -35,7 +31,8 @@ export const reducer = (state = initialState, action) => {
 	return handler(state, action);
 };
 
-const changeDepositTypeHelper = (state, depositType) => {
+const changeDepositHelper = (state, depositType) => {
+	depositType = depositType ? depositType : state.depositType;
 	const depositeParams = state.data.find((item) => item.code === depositType)
 		.param;
 	const periodFrom = depositeParams[0].period_from;
@@ -75,5 +72,29 @@ const changeDepositTypeHelper = (state, depositType) => {
 		sumFrom,
 		rate,
 		depositeSumValue,
+	};
+};
+
+const changeMonthCountHandler = (state, payload) => {
+	const rateAndSumParams = changeDepositHelper({
+		...state,
+		monthValue: payload,
+	});
+	return {
+		...state,
+		monthValue: payload,
+		...rateAndSumParams,
+	};
+};
+
+const changeSumValueHandler = (state, payload) => {
+	const rateAndSumParams = changeDepositHelper({
+		...state,
+		depositeSumValue: payload,
+	});
+	return {
+		...state,
+		depositeSumValue: payload,
+		...rateAndSumParams,
 	};
 };
