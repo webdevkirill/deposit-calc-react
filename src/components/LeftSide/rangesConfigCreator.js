@@ -1,9 +1,9 @@
-import { changeMonthValue } from '../../store/actions';
+import { changeMonthValue, changeSumValue } from '../../store/actions';
 
 export const rangesConfigCreator = (state) => {
 	return [
 		{
-			id: 'depositeTime',
+			id: 'monthValue',
 			title: 'Срок вклада',
 			valueName: 'мес.',
 			minValue: state.periodFrom,
@@ -13,16 +13,16 @@ export const rangesConfigCreator = (state) => {
 			tooltipText: 'Text of tooltip 1',
 			onChange: changeMonthValue,
 		},
-		// {
-		// 	id: 'depositeSum',
-		// 	title: 'Сумма вклада',
-		// 	valueName: 'Р',
-		// 	minValue: 100000,
-		// 	maxValue: 1000000,
-		// 	step: 10000,
-		// 	tooltipTitle: 'Тooltip 2',
-		// 	tooltipText: 'Text of tooltip 2',
-		// 	onChange: () => {},
-		// },
+		{
+			id: 'depositeSumValue',
+			title: 'Сумма вклада',
+			valueName: 'Р',
+			minValue: state.sumFrom,
+			maxValue: 100000000,
+			step: 10000,
+			tooltipTitle: 'Тooltip 2',
+			tooltipText: 'Text of tooltip 2',
+			onChange: changeSumValue,
+		},
 	];
 };

@@ -1,10 +1,18 @@
-import { CHANGE_DEPOSIT_TYPE, LOAD_DATA, CHANGE_MONTH_VALUE } from './types';
+import {
+	CHANGE_DEPOSIT_TYPE,
+	LOAD_DATA,
+	CHANGE_MONTH_VALUE,
+	CHANGE_SUM_VALUE,
+} from './types';
 
 const initialState = {
 	data: null,
 	depositType: null,
 	periodFrom: null,
 	monthValue: null,
+	sumFrom: null,
+	depositeSumValue: null,
+	rate: null,
 };
 
 const handlers = {
@@ -15,6 +23,10 @@ const handlers = {
 		...state,
 		monthValue: payload,
 	}),
+	[CHANGE_SUM_VALUE]: (state, { payload }) => ({
+		...state,
+		depositeSumValue: payload,
+	}),
 	default: (state) => state,
 };
 
@@ -24,14 +36,44 @@ export const reducer = (state = initialState, action) => {
 };
 
 const changeDepositTypeHelper = (state, depositType) => {
-	const periodFrom = state.data.find((item) => item.code === depositType)
-		.param[0].period_from;
+	const depositeParams = state.data.find((item) => item.code === depositType)
+		.param;
+	const periodFrom = depositeParams[0].period_from;
+	const monthValue =
+		state.monthValue < periodFrom ? periodFrom : state.monthValue;
+
+	const summParams = depositeParams.find(
+		(item, idx) =>
+			idx === depositeParams.length - 1 ||
+			monthValue < depositeParams[idx + 1].period_from
+	).summs_and_rate;
+
+	const sumFrom = summParams[0].summ_from;
+
+	let depositeSumValue, rate;
+
+	if (!state.depositeSumValue) {
+		rate = summParams[0].rate;
+		depositeSumValue = sumFrom;
+	} else {
+		const neededSummParams = summParams.find(
+			(item, idx) =>
+				idx === summParams.length - 1 ||
+				state.depositeSumValue < summParams[idx + 1].summ_from
+		);
+		console.log(neededSummParams);
+		rate = neededSummParams.rate;
+		depositeSumValue =
+			state.depositeSumValue < sumFrom ? sumFrom : state.depositeSumValue;
+	}
 
 	return {
 		...state,
 		depositType,
 		periodFrom,
-		monthValue:
-			state.monthValue < periodFrom ? periodFrom : state.monthValue,
+		monthValue,
+		sumFrom,
+		rate,
+		depositeSumValue,
 	};
 };

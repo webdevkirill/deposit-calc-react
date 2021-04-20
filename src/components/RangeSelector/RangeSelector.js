@@ -13,10 +13,11 @@ export default function RangeSelector({ config }) {
 		tooltipTitle,
 		tooltipText,
 		onChange,
+		id,
 	} = config;
 
 	const dispatch = useDispatch();
-	const monthValue = useSelector((state) => state.monthValue);
+	const monthValue = useSelector((state) => state[id]);
 	const rangeChangeHandler = (e, newValue) => {
 		dispatch(onChange(newValue));
 	};
