@@ -2,6 +2,7 @@ import React from 'react';
 import { Header } from '../../common/typography/typography';
 import DepositTypeChooser from '../DepositTypeChooser/DepositTypeChooser';
 import RangeSelector from '../RangeSelector/RangeSelector';
+import ResultBlock from '../ResultBlock/ResultBlock';
 
 const tooltipConfig = [
 	{
@@ -34,6 +35,7 @@ export default function LeftSide() {
 			{tooltipConfig.map((config) => (
 				<RangeSelector key={config.id} config={config} />
 			))}
+			<ResultBlock />
 		</div>
 	);
 }
